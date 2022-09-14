@@ -1,0 +1,84 @@
+.face-snap-card {
+  box-sizing: border-box;
+  width: 450px;
+  height: auto;
+  margin: 20px auto;
+  padding: 10px 30px;
+  box-shadow: lightgray 4px 4px 20px;
+  border-radius: 20px;
+  img {
+    width: 80%;
+    object-fit: contain;
+    
+  }
+}
+  h2 {
+    margin-bottom: 0;
+  }
+  p {
+    font-weight: 300;
+    font-size: 16px;
+  }
+  #noteWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: column;
+  }
+  #score {
+    margin: 20px;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .wellSnapped {
+    transition: all 1s;
+    background-color: rgba(lightgreen, 0.4);
+    color: darkgreen;
+    animation: likedPics 0.4s;
+    button {
+      box-shadow: lightgreen 3px 3px 7px;
+      color: darkgreen;
+      &:active {
+        box-shadow: lightgreen 0 0 5px;
+      }
+    }
+  }
+  .hellSnapped {
+    transition: all 1s;
+    background-color: rgba(brown, 0.4);
+    color: darkred;
+    animation: dislikedPics 0.2s;
+    button {
+      box-shadow: brown 3px 3px 7px;
+      color: darkred;
+      &:active {
+        box-shadow: brown 0 0 5px;
+      }
+    }
+  }
+  @keyframes dislikedPics {
+    0%{transform: skewX(5deg);}
+    5%{transform: skewX(-5deg);}
+    20%{transform: skewX(5deg);}    
+    55%{transform: skewX(-5deg);}
+    60%{transform: skewX(5deg);}
+    65%{transform: skewX(-5deg);}
+    70%{transform: skewX(5deg);}
+    75%{transform: skewX(-5deg);}
+    80%{transform: skewX(5deg);}
+    85%{transform: skewX(-5deg);}
+    90%{transform: skewX(5deg);}
+    95%{transform: skewX(-5deg);}
+  }
+  @keyframes likedPics {
+    0%{transform: scale(1);}
+    20%{transform: scaleY(1.5);}
+    40%{transform: scale(1.5,1.5);}
+    60%{transform: scale(1,1.5);}
+    100%{transform: scale(1);}
+  }

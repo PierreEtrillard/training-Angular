@@ -1,0 +1,7 @@
+<div appBorderCard class="face-snap-card"
+[ngClass]="{ wellSnapped: faceSnap.snaps > 15 , hellSnapped: faceSnap.snaps < -5 }" >
+
+<h2 >{{ faceSnap.title | uppercase }}</h2>
+  <p>{{ faceSnap.description | titlecase}}</p>
+  <button (click)="snapDetail()">CLICK TO VIEW</button>
+</div>

@@ -1,0 +1,8 @@
+<header>
+    <h1>{{title | titlecase}}</h1>
+    <nav>
+        <a routerLink="home"   routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"(click)="changeTitle()">Home</a>
+      <a routerLink="facesnaps" routerLinkActive="active" (click)="changeTitle()">FaceSnaps</a>
+      <a routerLink="disney" routerLinkActive="active" (click)="changeTitle()">Disney</a>
+    </nav>
+  </header>

@@ -1,0 +1,44 @@
+<div *ngIf="character" class="row">
+    <div class="col s12 m8 offset-m2">
+    <h2 class="header center">{{ character.imageUrl }}</h2>
+    <div class="card horizontal hoverable">
+      <div class="card-image">
+        <img [src]="character.imageUrl">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <table class="bordered striped">
+            <tbody>
+              <tr>
+                <td>Nom</td>
+                <td><strong>{{ character.name }}</strong></td>
+              </tr>
+              <tr>
+                <td>films</td>
+                <td><strong>{{ character.films }}</strong></td>
+              </tr>
+              <tr>
+                <td>Séries</td>
+                <td><strong>{{ character.shortFilms }}</strong></td>
+              </tr>
+              <tr>
+                <td>Mes alliés</td>
+                <td>
+                  <span *ngFor="let allie of character.allies" >{{ allie }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>liens</td>
+                <td><em>{{ character.url }}</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a (click)="goBack()">Retour</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <h4 *ngIf='!character' class="center">Aucun personnages à afficher !</h4>

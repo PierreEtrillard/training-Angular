@@ -1,0 +1,20 @@
+<div class="face-snap-card"
+[ngClass]="{ wellSnapped: faceSnap.snaps > 15 }"
+[ngClass]="{ hellSnapped: faceSnap.snaps < -5 }">
+  <h2>{{ faceSnap.title | uppercase }}</h2>
+  <p>Mis en ligne le {{ faceSnap.createdDate | date:'dd MMMM. à HH:mm'}}</p>
+  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
+  <p>{{ faceSnap.description | titlecase}}</p>
+  <p *ngIf="faceSnap.location">visible à : {{ faceSnap.location }}</p>
+  <div id="noteWrapper">
+      {{ advertisUser }}
+      
+      <div id="score">
+          <button (click)="onClickadd()">👍</button>
+          <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps*20 + ', 0)' }">{{ faceSnap.snaps }}</span>
+          <button (click)="onClickRemove()">👎</button>
+        </div>
+    </div>
+    <a routerLink="/facesnaps">← BACK TO HOME</a>
+</div>
+

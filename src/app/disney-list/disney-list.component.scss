@@ -1,0 +1,51 @@
+h2#titleColor {
+  font-size: 72px;
+  background: -webkit-linear-gradient(
+    120deg,
+    #000000 0%,
+    purple 50%,
+    #ff0000 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px;
+}
+fa-icon {
+  margin: 15px;
+}
+img {
+  height: 250px;
+  object-fit: cover;
+  border: blue 3px double;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-top: 60px;
+}
+h2.wrong {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: auto;
+  color: red;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px;
+  text-overflow: clip;
+  color: saddlebrown;
+  font-weight: bold;
+  border-radius: 20px;
+  box-shadow: 5px 2px 10px grey;
+}
+p {
+  margin: 10px;
+  cursor: pointer;
+}

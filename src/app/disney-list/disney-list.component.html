@@ -1,0 +1,24 @@
+<!-- <app-disney-list *ngFor="let character of disneyList" [character]="character"></app-disney-list> -->
+<div class="search">
+  <fa-icon class="loupe" [icon]="faMagnifyingGlass"></fa-icon>
+  <input
+    #search
+    type="text"
+    placeholder="Entrez le nom de votre personnage"
+    (keyup.enter)="selCharacter(search.value)"
+  />
+</div>
+<h2 id="titleColor">
+  {{ name }} sélectioné
+  <img src="{{ image }}" alt="image de {{ name }}" appBorderCard (click)="navOnDetail()"/>
+</h2>
+<h2 *ngIf="wrongChoice" class="wrong">
+  <fa-icon [icon]="faCircleXmark"></fa-icon>
+  Votre personnage n'est pas référencé
+  <fa-icon [icon]="faCircleXmark"></fa-icon>
+</h2>
+<div class="list">
+  <p *ngFor="let character of disneyList" (click)="selCharacter(character.name )">
+    {{ character.name }}
+  </p>
+</div>

@@ -1,0 +1,50 @@
+.landing-block {
+  width: 60;
+  display: flex;
+}
+.landing-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  height: 400px;
+  justify-content: space-around;
+}
+h2#titleSelClr {
+  font-size: 72px;
+  background: -webkit-linear-gradient(
+    120deg,
+    #000000 0%,
+    purple 50%,
+    #ff0000 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+button {
+  box-shadow: 2px 3px 4px grey;
+  width: 200px;
+  transition: all .3s;
+  margin: 20px;
+  font-weight: bolder;
+  &:hover{
+    scale: 1.2;
+    filter: contrast(200%);
+    cursor: pointer;
+  }
+   &.dark {
+    background-color: #161a42;
+    color: aliceblue;
+    box-shadow: 2px 3px 4px grey;
+  }
+  &.blue {
+    background-color: lightblue;
+    color: darkblue;
+  }
+  &.green {
+    background-color: lightgreen;
+    color: #563E34;
+    box-shadow: 2px 3px 4px grey;
+  }
+}
