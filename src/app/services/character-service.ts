@@ -1,12 +1,23 @@
+
 import { faTable } from "@fortawesome/free-solid-svg-icons";
 import { Character } from "../model/character.model";
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
 
 
+@Injectable({
+    providedIn: 'root'
+})
+export class CharacterService {
+    getCharactersList(): Character[] { return characterList }
+    getCharacterById(characterId: number): Character | undefined {
+        return characterList.find(character => character._id == characterId)
+    }
+}
 // export class characterService {
-//     characterList: Promise<Character[]> = this.getAllCharacters(1);
+//     characterList: Character[] = this.getAllCharacters(1);
 
-// async function getAllCharacters(page: number): Promise<Character[]> {
+// async function getAllCharacters(page: number): Character[] {
 //     const apiData: any = await fetch(`https://api.disneyapi.dev/characters?page=${page}`)
 //         .catch((err) => {
 //             console.log(`une erreur s'est produite pendant la requète de l'api ${err}`)
@@ -16,7 +27,7 @@ import { HttpClient } from '@angular/common/http';
 // };
 
 
-export const characterList: Character[] =
+const characterList: Character[] =
 
     [
         {
@@ -25,7 +36,7 @@ export const characterList: Character[] =
             "tvShows": [],
             "videoGames": [],
             "parkAttractions": [],
-            "allies": [],
+            "allies": ["Patrick","Bob","Joe"],
             "enemies": [],
             "_id": 6,
             "name": "Olu Mel",

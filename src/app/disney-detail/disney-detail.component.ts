@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character } from '../model/character.model';
-import { characterList } from '../services/character-service';
+import { CharacterService } from '../services/character-service';
 
 @Component({
   selector: 'app-disney-detail',
@@ -10,18 +10,28 @@ import { characterList } from '../services/character-service';
 })
 
 export class DisneyDetailComponent implements OnInit {
-  characterList: Character[] = characterList;
+  characterList: Character[] ;
   character: Character | undefined;
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private characterService :CharacterService) { }
 
   ngOnInit() {
-    this.characterList
+    this.characterList = this.characterService.getCharactersList()
     const characterId: string | null = this.route.snapshot.paramMap.get('id')
     if (characterId) {
-      this.character = this.characterList.find(char => char._id == +characterId)
+      this.character = this.characterService.getCharacterById(+characterId)
     }
   }
   goBack() {
     this.router.navigate(['disney'])
   }
+  editCharacter(){
+    const characterId: string | null = this.route.snapshot.paramMap.get('id')
+    if (characterId) {
+      this.character = this.characterService.getCharacterById(+characterId)
+      this.router.navigate([`disney/submit/${+characterId}`])
+    }
+}
 }

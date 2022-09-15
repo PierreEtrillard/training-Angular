@@ -14,22 +14,25 @@ import { DisneyDetailComponent } from './disney-detail/disney-detail.component';
 import { FaceSnapListComponent } from './face-snap-list/face-snap-list.component';
 import { FaceSnapComponent } from './face-snap/face-snap.component';
 import { SingleFaceSnapComponent } from './single-face-snap/single-face-snap.component';
+import { FormsModule } from '@angular/forms';
+import { CharacterFormComponent } from './character-form/character-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DisneyListComponent,
     DisneyDetailComponent,
+    DisneyListComponent,
     FaceSnapComponent,
     FaceSnapListComponent,
     SingleFaceSnapComponent,
     PageNotFoundComponent,
-
+    CharacterFormComponent,
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
   ],

@@ -8,13 +8,13 @@
     (keyup.enter)="selCharacter(search.value)"
   />
 </div>
-<h2 id="titleColor">
+<h2 class="titleColor">
   {{ name }} sélectioné
   <img src="{{ image }}" alt="image de {{ name }}" appBorderCard (click)="navOnDetail()"/>
 </h2>
 <h2 *ngIf="wrongChoice" class="wrong">
   <fa-icon [icon]="faCircleXmark"></fa-icon>
-  Votre personnage n'est pas référencé
+  {{wrongMessage}}
   <fa-icon [icon]="faCircleXmark"></fa-icon>
 </h2>
 <div class="list">

@@ -37,8 +37,11 @@
         <div class="card-action">
           <a (click)="goBack()">Retour</a>
         </div>
+        <div class="card-action">
+          <a (click)="editCharacter()">Editer</a>
+        </div>
       </div>
     </div>
     </div>
     </div>
-    <h4 *ngIf='!character' class="center">Aucun personnages à afficher !</h4>
+    <h4 *ngIf='!character' class="center">Aucun personnages à afficher sur cette page!</h4>
