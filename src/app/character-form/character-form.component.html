@@ -1,0 +1,84 @@
+<form *ngIf="characterDetails" (ngSubmit)="onSubmit()" #characterForm="ngForm">
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <div class="card-panel">
+        <h2 class="titleColor">edition de {{characterDetails.name}}</h2>
+        <img src="{{characterDetails.imageUrl}}" alt="">
+    
+        <!-- character name -->
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            pattern="^[a-zA-Z0-9àéèç]{1,25}$"
+            [(ngModel)]="character.name"
+            name="name"
+            #name="ngModel">
+          <div
+            [hidden]="name.valid || name.pristine"
+            class="card-panel red accent-1">          >
+            Le nom du personnage est requis.
+          </div>
+        </div>
+
+        <!-- character films -->
+        <div class="form-group">
+          <label for="films">Nombre de films</label>
+          <input
+            type="number"
+            class="form-control"
+            id="films"
+            required
+            pattern="^[0-9]{1,3}$"
+            [(ngModel)]="character.films.length"
+            name="films"
+            #films="ngModel"
+          >
+          <div
+            [hidden]="films.valid || films.pristine"
+            class="card-panel red accent-1"
+          >
+            Les nombres de film dans lesquels le personnage apparait doit être
+            compris entre 0 et 999.
+          </div>
+        </div>
+     
+
+        <!-- character allies -->
+        <form class="form-group">
+          <label for="allie">alliesList</label>
+          <p *ngFor="let allie of alliesList">
+            <label>
+              <input
+                type="checkbox"
+                class="filled-in"
+                id="{{ allie }}"
+                [value]="allie"
+                [checked]="hasAllie(allie)"
+                (change)="selectAllie($event, allie)">
+              <span [attr.for]="allie">
+                  {{ allie }}
+              </span>
+            </label>
+          </p>
+        </form> 
+
+        <!-- Submit button -->
+        <div class="divider"></div>
+        <div class="section center">
+          <button
+            type="submit"
+            class="waves-effect waves-light btn"
+            [disabled]="!characterForm.form.valid"
+          >
+            Valider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<h3 *ngIf="!characterDetails" class="center">Aucun personnage à éditer...</h3>
