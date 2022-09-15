@@ -1,14 +1,26 @@
 
 import { faTable } from "@fortawesome/free-solid-svg-icons";
-import { Character } from "../model/character.model";
+import { Character, DisneyApiRes } from "../model/character.model";
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
+import { catchError, Observable, of, tap } from "rxjs";
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class CharacterService {
+    constructor(private http: HttpClient) { }
+
+    getApiList(page:number): Observable<DisneyApiRes> {
+        return  this.http.get<DisneyApiRes>(`https://api.disneyapi.dev/characters?page=${page}`)
+            .pipe(tap((res) => console.table(res)),
+                catchError((err) => {
+                    console.log(err);
+                    return of()
+                })
+            )
+    }
     getCharactersList(): Character[] { return characterList }
     getCharacterById(characterId: number): Character | undefined {
         return characterList.find(character => character._id == characterId)

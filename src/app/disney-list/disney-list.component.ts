@@ -22,9 +22,11 @@ export class DisneyListComponent implements OnInit {
   constructor(
     private router: Router,
     private characterService:CharacterService) { }
-  ngOnInit() {
+  async ngOnInit() {
     this.disneyList = this.characterService.getCharactersList()
-    console.table(this.disneyList);
+    const apiList = await this.characterService.getApiList(26)
+    console.log(apiList);
+    
   }
   selCharacter(nameSearched: string | undefined) {
     const index: number = (this.disneyList).findIndex((objTargeted: any) => objTargeted.name === nameSearched)
@@ -44,4 +46,5 @@ export class DisneyListComponent implements OnInit {
       this.wrongChoice = true;
     }
   }
+
 }

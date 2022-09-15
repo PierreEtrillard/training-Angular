@@ -1,4 +1,4 @@
-<form *ngIf="characterDetails" (ngSubmit)="onSubmit()" #characterForm="ngForm">
+<form *ngIf="characterDetails" (ngSubmit)="onSubmit()" #characterDetailsForm="ngForm">
   <div class="row">
     <div class="col s8 offset-s2">
       <div class="card-panel">
@@ -14,12 +14,12 @@
             id="name"
             required
             pattern="^[a-zA-Z0-9àéèç]{1,25}$"
-            [(ngModel)]="character.name"
+            [(ngModel)]="characterDetails.name"
             name="name"
             #name="ngModel">
           <div
             [hidden]="name.valid || name.pristine"
-            class="card-panel red accent-1">          >
+            class="card-panel red accent-1">      
             Le nom du personnage est requis.
           </div>
         </div>
@@ -33,7 +33,7 @@
             id="films"
             required
             pattern="^[0-9]{1,3}$"
-            [(ngModel)]="character.films.length"
+            [(ngModel)]="characterDetails.films.length"
             name="films"
             #films="ngModel"
           >
@@ -49,13 +49,13 @@
 
         <!-- character allies -->
         <form class="form-group">
-          <label for="allie">alliesList</label>
-          <p *ngFor="let allie of alliesList">
+          <label for="allie">{{characterDetails.allies}}</label>
+          <p *ngFor="let allie of characterDetails.allies">
             <label>
               <input
                 type="checkbox"
                 class="filled-in"
-                id="{{ allie }}"
+                id="allie"
                 [value]="allie"
                 [checked]="hasAllie(allie)"
                 (change)="selectAllie($event, allie)">
@@ -72,7 +72,7 @@
           <button
             type="submit"
             class="waves-effect waves-light btn"
-            [disabled]="!characterForm.form.valid"
+            [disabled]="!characterDetailsForm.form.valid"
           >
             Valider
           </button>

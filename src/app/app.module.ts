@@ -32,8 +32,8 @@ import { CharacterFormComponent } from './character-form/character-form.componen
   imports: [
     BrowserModule,
     FontAwesomeModule,
-    FormsModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
   ],
   providers: [

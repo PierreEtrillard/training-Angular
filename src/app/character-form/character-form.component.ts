@@ -23,8 +23,7 @@ export class CharacterFormComponent implements OnInit {
     const currentUrl: string = document.location.href;
     const characterId: string = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
     this.characterDetails = this.characterService.getCharacterById(+characterId);
-    
-    this.alliesList = this.characterDetails?.allies
+    this.alliesList = this.characterDetails?.allies;
     console.log(this.alliesList);
   }
   hasAllie(allie: string): boolean {

@@ -12,3 +12,9 @@ export class Character
   imageUrl!: string
   url!: string;
 }
+export class DisneyApiRes
+{data:[];
+  count:number;
+  totalPages:number;
+  nextPage:string
+}
