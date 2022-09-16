@@ -13,7 +13,7 @@ export class Character
   url!: string;
 }
 export class DisneyApiRes
-{data:[];
+{data:Character[];
   count:number;
   totalPages:number;
   nextPage:string

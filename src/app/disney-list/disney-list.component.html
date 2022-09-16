@@ -10,15 +10,27 @@
 </div>
 <h2 class="titleColor">
   {{ name }} sélectioné
-  <img src="{{ image }}" alt="image de {{ name }}" appBorderCard (click)="navOnDetail()"/>
+  <img
+    src="{{ image }}"
+    alt="image de {{ name }}"
+    appBorderCard
+    (click)="navOnDetail()"
+  />
 </h2>
 <h2 *ngIf="wrongChoice" class="wrong">
   <fa-icon [icon]="faCircleXmark"></fa-icon>
-  {{wrongMessage}}
+  {{ wrongMessage }}
   <fa-icon [icon]="faCircleXmark"></fa-icon>
 </h2>
-<div class="list">
-  <p *ngFor="let character of disneyList" (click)="selCharacter(character.name )">
-    {{ character.name }}
-  </p>
+<div class="listWrapper">
+  <fa-icon class="selectors" *ngClass="{ enabled: page > 0 , disabled: page < 149 }" id="preview" [icon]="faPlay"></fa-icon>
+  <div class="list">
+    <p
+      *ngFor="let character of disneyList"
+      (click)="selCharacter(character.name)"
+    >
+      {{ character.name }}
+    </p>
+  </div>
+  <fa-icon class="selectors" *ngClass="{ enabled: page < 0 , disabled: page > 149 }" id="next" [icon]="faPlay"></fa-icon>
 </div>

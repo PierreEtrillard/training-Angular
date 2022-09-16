@@ -31,9 +31,10 @@ app-header{width:100%}
 .search {  
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 60px;
   width: 80%;
   margin: auto;
-  height:40px;
   padding: 10px;
   border: 10px solid;
   border-image-slice: 1;
@@ -81,6 +82,7 @@ input {
 }
 fa-icon.loupe{
   font-size:22px;
+  margin-top: 10px;
   background: -webkit-linear-gradient(
       120deg,
       #000000 0%,

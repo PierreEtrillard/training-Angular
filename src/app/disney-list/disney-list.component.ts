@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../model/character.model';
 import { CharacterService } from '../services/character-service'
-import { faMagnifyingGlass, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCircleXmark, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,20 +13,19 @@ import { Router } from '@angular/router';
 export class DisneyListComponent implements OnInit {
   faCircleXmark = faCircleXmark;
   faMagnifyingGlass = faMagnifyingGlass;
+  faPlay = faPlay;
   disneyList: Character[] ;
   name: string | undefined = "Vous n'avez encore rien";
   image: string = "./../assets/images/Disney_logo.webp";
   wrongChoice: boolean = false;
-  wrongMessage:string = "Ce personnage n'est pas référencé"
+  wrongMessage:string = "Ce personnage n'est pas référencé";
+  page:number = 2;
 
   constructor(
     private router: Router,
     private characterService:CharacterService) { }
-  async ngOnInit() {
-    this.disneyList = this.characterService.getCharactersList()
-    const apiList = await this.characterService.getApiList(26)
-    console.log(apiList);
-    
+  ngOnInit() {
+    this.disneyList = this.characterService.getCharactersList(this.page)
   }
   selCharacter(nameSearched: string | undefined) {
     const index: number = (this.disneyList).findIndex((objTargeted: any) => objTargeted.name === nameSearched)

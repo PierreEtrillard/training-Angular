@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   changeTitle() {
     setTimeout(() => {
       this.currentUrl = document.location.href;
-    console.log(this.currentUrl);    
     this.title = this.currentUrl.substring(this.currentUrl.lastIndexOf("/") + 1)
     }, 30);
   }

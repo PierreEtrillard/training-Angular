@@ -12,13 +12,14 @@ import { CharacterService } from '../services/character-service';
 export class DisneyDetailComponent implements OnInit {
   characterList: Character[] ;
   character: Character | undefined;
+  page:number = 2;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private characterService :CharacterService) { }
 
   ngOnInit() {
-    this.characterList = this.characterService.getCharactersList()
+    this.characterList = this.characterService.getCharactersList(this.page)
     const characterId: string | null = this.route.snapshot.paramMap.get('id')
     if (characterId) {
       this.character = this.characterService.getCharacterById(+characterId)

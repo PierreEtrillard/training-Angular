@@ -34,3 +34,18 @@ p {
   margin: 10px;
   cursor: pointer;
 }
+.selector{
+  color:darkblue;
+  font-size: 40px;
+  transform: scaleY(3);
+  transition: 0.4s;
+  &:hover{
+    color: cadetblue;
+    cursor: pointer;
+  }
+}
+#preview{transform: rotate(180);}
+fa-icon.disabled{
+  color: grey;
+  cursor: not-allowed;
+}

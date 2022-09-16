@@ -13,6 +13,7 @@ export class CharacterFormComponent implements OnInit {
   @Input() character: Character;
   alliesList: string[] | undefined;
   characterDetails: Character | undefined;
+  characterId: any;
 
   constructor(
     private characterService: CharacterService,
@@ -24,7 +25,6 @@ export class CharacterFormComponent implements OnInit {
     const characterId: string = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
     this.characterDetails = this.characterService.getCharacterById(+characterId);
     this.alliesList = this.characterDetails?.allies;
-    console.log(this.alliesList);
   }
   hasAllie(allie: string): boolean {
     return this.character.allies.includes(allie)
@@ -39,8 +39,8 @@ export class CharacterFormComponent implements OnInit {
     }
   }
   onSubmit() {
-console.log('Sub Formulaire/');
-this.router.navigate(['disney',this.character._id])
+console.log('Sub Formulaire/'+ this.characterDetails?._id);
+this.router.navigate([`/disney/${this.characterDetails?._id}`])
 
   }
 }
