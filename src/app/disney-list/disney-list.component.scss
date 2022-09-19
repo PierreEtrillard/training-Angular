@@ -34,9 +34,15 @@ p {
   margin: 10px;
   cursor: pointer;
 }
-.selector{
+.listWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#previous{transform: rotate(180deg) scaleY(3);}
+.selectors{
   color:darkblue;
-  font-size: 40px;
+  font-size: 60px;
   transform: scaleY(3);
   transition: 0.4s;
   &:hover{
@@ -44,8 +50,10 @@ p {
     cursor: pointer;
   }
 }
-#preview{transform: rotate(180);}
-fa-icon.disabled{
+.disabled{
   color: grey;
   cursor: not-allowed;
+  font-size: 60px;
+  transform: scaleY(3);
 }
+

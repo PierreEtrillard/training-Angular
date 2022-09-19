@@ -3,6 +3,7 @@ import { Character } from '../model/character.model';
 import { CharacterService } from '../services/character-service'
 import { faMagnifyingGlass, faCircleXmark, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-disney-list',
@@ -14,36 +15,53 @@ export class DisneyListComponent implements OnInit {
   faCircleXmark = faCircleXmark;
   faMagnifyingGlass = faMagnifyingGlass;
   faPlay = faPlay;
-  disneyList: Character[] ;
+  disneyList: Character[];
+  page: number;
   name: string | undefined = "Vous n'avez encore rien";
   image: string = "./../assets/images/Disney_logo.webp";
+  selectedCharacter: Character | undefined ;
   wrongChoice: boolean = false;
-  wrongMessage:string = "Ce personnage n'est pas référencé";
-  page:number = 2;
+  wrongMessage: string = "Ce personnage n'est pas référencé";
 
   constructor(
     private router: Router,
-    private characterService:CharacterService) { }
-  ngOnInit() {
-    this.disneyList = this.characterService.getCharactersList(this.page)
+    private characterService: CharacterService) { }
+  async ngOnInit() {
+    localStorage['page'] ? this.page = localStorage['page'] : this.page =1;
+    console.log(this.page);
+    this.disneyList = await this.characterService.getCharactersList(this.page);
   }
+
   selCharacter(nameSearched: string | undefined) {
-    const index: number = (this.disneyList).findIndex((objTargeted: any) => objTargeted.name === nameSearched)
-    if (index >= 0 && index < 50) {
-      console.log(index);
-      this.name = this.disneyList[index].name;
-      this.image = `${this.disneyList[index].imageUrl}`;
+    this.selectedCharacter = this.disneyList.find((char) => char.name === nameSearched)
+    console.table(this.disneyList)
+    if (this.selectedCharacter !== undefined) {
+      this.name = this.selectedCharacter.name;
+      this.image = this.selectedCharacter.imageUrl;
       this.wrongChoice = false;
     } else { this.wrongChoice = true }
   }
+
   navOnDetail() {
     if (this.name !== "Vous n'avez encore rien") {
-      const id: number | undefined = (this.disneyList).find((char) => char.name === this.name)?._id
-      this.router.navigate([`disney/${id}`])
-    }else{
+      this.router.navigate([`disney/${this.selectedCharacter?._id}`])
+    } else {
       this.wrongMessage = "Choissisez d'abord un perssonage";
       this.wrongChoice = true;
     }
   }
-
+  async selPage(selection: string) {
+    if (this.page >= 1 && this.page < 150) {
+      switch (selection) {
+        case 'previous':
+          this.page != 1 ? --this.page :this.page = 149
+          break;
+        case 'next':
+          this.page != 149 ? ++this.page :this.page = 1
+          break;
+      }
+    };
+    localStorage['page'] = this.page    
+    this.disneyList = await this.characterService.getCharactersList(this.page)
+  }
 }

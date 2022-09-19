@@ -20,10 +20,10 @@ export class CharacterFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     const currentUrl: string = document.location.href;
     const characterId: string = currentUrl.substring(currentUrl.lastIndexOf("/") + 1);
-    this.characterDetails = this.characterService.getCharacterById(+characterId);
+    this.characterDetails = await this.characterService.getCharacterById(+characterId);
     this.alliesList = this.characterDetails?.allies;
   }
   hasAllie(allie: string): boolean {

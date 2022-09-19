@@ -11,27 +11,27 @@ import { CharacterService } from '../services/character-service';
 
 export class DisneyDetailComponent implements OnInit {
   characterList: Character[] ;
-  character: Character | undefined;
-  page:number = 2;
+  character: Character|undefined ;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private characterService :CharacterService) { }
 
-  ngOnInit() {
-    this.characterList = this.characterService.getCharactersList(this.page)
+  async ngOnInit() {
+    this.characterList = await this.characterService.getCharactersList(localStorage["page"])
+    console.table(this.characterList);
     const characterId: string | null = this.route.snapshot.paramMap.get('id')
     if (characterId) {
-      this.character = this.characterService.getCharacterById(+characterId)
+      this.character = await this.characterService.getCharacterById(+characterId)
     }
   }
   goBack() {
     this.router.navigate(['disney'])
   }
-  editCharacter(){
+  async editCharacter(){
     const characterId: string | null = this.route.snapshot.paramMap.get('id')
     if (characterId) {
-      this.character = this.characterService.getCharacterById(+characterId)
+      this.character = await this.characterService.getCharacterById(+characterId)
       this.router.navigate([`disney/submit/${+characterId}`])
     }
 }

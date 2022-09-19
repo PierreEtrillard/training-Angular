@@ -7,7 +7,7 @@ export class Character
   parkAttractions: Array<string>;
   allies: Array<string>;
   enemies: Array<string>;
-  _id: number;
+  _id!: number;
   name!: string;
   imageUrl!: string
   url!: string;
