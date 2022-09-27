@@ -1,0 +1,15 @@
+<h2 class="titleColor">Voici vos personnages favoris</h2>
+<div class="favWrapper">
+    <div *ngFor="let favori of favorisList" class="card">
+        <div class="card-body"><img class="card-img-top img-fluid" [src]="favori.imageUrl">
+        <div class="card-title">{{favori.name}}</div>
+              </div>
+      <div class="votes">
+        <p class="scoreplus">{{favori.likesArray}}</p>
+        <button class="plus btn-large waves-effect waves-green" (click)="onClickadd(favori.characterId)">+</button>
+        <!-- <span [ngStyle]="{ color: 'rgb(0, ' + favori.likesArray*20 + ', 0)' }">{{ favori.likesArray }}</span> -->
+        <button class= "moins btn-large waves-effect waves-orange" (click)="onClickRemove(favori.characterId)">-</button>
+        <p class="scoremoins" >{{favori.dislikesArray}}</p>
+      </div>
+    </div>
+</div>

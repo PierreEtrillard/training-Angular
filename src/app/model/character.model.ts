@@ -18,3 +18,12 @@ export class DisneyApiRes
   totalPages:number;
   nextPage:string
 }
+
+export class Favoris
+{
+  name!: string;
+  characterId!: number;
+  imageUrl!: string;
+  likesArray!:string[];
+  dislikesArray!:string[];
+}

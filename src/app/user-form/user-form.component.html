@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col s12 m4 offset-m4">
+    <div class="card hoverable">
+      <div class="card-content center">
+        <span class="card-title">Page de connexion</span>
+        <p>
+          <em>{{ message }}</em>
+        </p>
+      </div>
+      <form (ngSubmit)="(onSubmit)" #signinForm="ngForm">
+        <div>
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" [(ngModel)]="nom" name="nom" required />
+        </div>
+        <div>
+          <label for="prenom">Prénom</label>
+          <input
+            type="text"
+            id="prenom"
+            [(ngModel)]="prenom"
+            name="prenom"
+            required
+
+          />
+        </div>
+        <div>
+          <label for="mail">mail</label>
+          <input
+            type="mail"
+            id="mail"
+            [(ngModel)]="mail"
+            name="mail"
+            required
+
+          />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+            
+          />
+        </div>
+      </form>
+      <div class="card-action center">
+        <button
+          type="submit"
+          (click)="onSubmit()"
+          class="waves-effect waves-light btn"
+          [disabled]="!signinForm.form.valid"
+        >
+          Je m'inscris
+        </button>
+        <!-- <a (click)="login()" class="waves-effect waves-light btn"  *ngIf="!authService.isLoggedIn">Se connecter</a> -->
+        <!-- <a (click)="logout()" *ngIf="authService.isLoggedIn">Se déconnecter</a> -->
+      </div>
+    </div>
+  </div>
+</div>

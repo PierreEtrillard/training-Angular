@@ -15,7 +15,9 @@ import { FaceSnapListComponent } from './face-snap-list/face-snap-list.component
 import { FaceSnapComponent } from './face-snap/face-snap.component';
 import { SingleFaceSnapComponent } from './single-face-snap/single-face-snap.component';
 import { FormsModule } from '@angular/forms';
-import { CharacterFormComponent } from './character-form/character-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { FavorisComponent } from './favoris/favoris.component';
+import { DisneyLoginComponent } from './disney-login/disney-login.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { CharacterFormComponent } from './character-form/character-form.componen
     FaceSnapListComponent,
     SingleFaceSnapComponent,
     PageNotFoundComponent,
-    CharacterFormComponent,
+    UserFormComponent,
+    FavorisComponent,
+    DisneyLoginComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     FontAwesomeModule,
     HttpClientModule,
-    FormsModule,
     AppRoutingModule,
   ],
   providers: [

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  urlUserPost:"http://localhost:3000/signin",
+  urlFavorisPost:"http://localhost:3000/favoris",
+  production: false,
 };
 
 /*

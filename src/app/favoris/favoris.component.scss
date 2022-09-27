@@ -1,0 +1,53 @@
+.card {
+  width: 200px;
+  height: 350px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.votes{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1px;
+}
+.scoreplus{
+  font-weight: bolder;
+  text-align: center;
+  color: green}
+  .scoremoins{
+    color: darkred;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+img {
+  object-fit: contain;
+  max-height: 250px;
+  width: 100%;
+}
+.favWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+button {font-size: larger;
+    font-weight: bolder;    
+  &.plus {    
+    border-top-left-radius: 20px;
+    background-color: green;
+    &:hover {
+      background-color: lightgreen;
+    }
+  }
+  &.moins {
+    border-top-right-radius: 20px;
+    background-color: darkred;
+    &:hover {
+      background-color: lightcoral;
+    }
+  }
+}

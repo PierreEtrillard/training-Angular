@@ -1,0 +1,35 @@
+<h1>Squelize training</h1>
+<main>
+    <div class="Users">
+        <h2>Utilisateurs</h2>
+        <ul>
+            {{#each users}}
+            <li>{{dataValues.nom}} - {{dataValues.prenom}} - {{dataValues.mail}}</li>
+            {{/each}}
+        </ul>
+    </div>
+
+
+    <form method="POST" action="/signin">enregistrez vous :
+        <div>Votre Nom:
+            <label for="nom"></label>
+            <input type="text" name="nom">
+        </div>
+        <div>Votre Prenom:
+            <label for="prenom"></label>
+            <input type="text" name="prenom">
+        </div>
+        <div>Votre Mail:
+            <label for="mail"></label>
+            <input type="mail" name="mail">
+        </div>
+        <div>Votre Mot de passe:
+            <label for="password"></label>
+            <input type="password" name="password">
+        </div>
+        <hr />
+
+        <button type="submit">Valider</button>
+
+    </form>
+</main>

@@ -1,12 +1,32 @@
 <!-- <app-disney-list *ngFor="let character of disneyList" [character]="character"></app-disney-list> -->
-<div class="search">
-  <fa-icon class="loupe" [icon]="faMagnifyingGlass"></fa-icon>
-  <input
-    #search
-    type="text"
-    placeholder="Entrez le nom de votre personnage"
-    (keyup.enter)="selCharacter(search.value)"
-  />
+<div class="card">
+  <div class="card-content">
+    <div class="search">
+      <fa-icon class="loupe" [icon]="faMagnifyingGlass"></fa-icon>
+      <input
+      #search
+        type="text"
+        placeholder="Entrez le nom de votre personnage"
+        (keyup.enter)="selCharacter(search.value)"
+      />
+      <!-- <input
+      #autoComplete
+        type="search"
+        dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off"
+      /> -->
+      <!-- <input
+      #searchBox
+      (keyup)="search(searchBox.value)"
+        type="text"
+        placeholder="Entrez le nom de votre personnage"
+      /> -->
+      <!-- <div class="collection">
+        <a *ngFor="let character of characters$ | async"
+        (click)="navOnDetail()"
+        class="collection-item">{{character.name}}</a>
+      </div> -->
+    </div>
+  </div>
 </div>
 <h2 class="titleColor">
   {{ name }} sélectioné
